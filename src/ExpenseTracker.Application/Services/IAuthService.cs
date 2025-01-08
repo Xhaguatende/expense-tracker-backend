@@ -1,16 +1,12 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="ICurrencyService.cs" company="{Company Name}">
+//  <copyright file="IAuthService.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
 namespace ExpenseTracker.Application.Services;
 
-using Domain.Expenses.ValueObjects;
-
-public interface ICurrencyService
+public interface IAuthService
 {
-    IEnumerable<Currency> GetAllCurrencies();
-
-    Currency? GetCurrency(string isoCurrencySymbol);
+    Task<bool> SendEmailVerificationAsync(string userId, CancellationToken cancellationToken);
 }

@@ -72,7 +72,9 @@ public static class ServiceCollectionExtensions
             });
 
         services.AddScoped<IExpenseRepository, ExpenseRepository>();
+        services.AddScoped<IExpenseViewRepository, ExpenseViewRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ICurrencyRepository, CurrencyRepository>();
 
         MongoConventions.Initialize();
     }
@@ -82,7 +84,14 @@ public static class ServiceCollectionExtensions
         services.AddHttpContextAccessor()
             .AddSingleton<IApplicationContextService, HttpApplicationContextService>();
 
-        services.AddScoped<ICurrencyService, CurrencyService>();
+
+        services.AddHttpClient<IAuthService, AuthService>((serviceProvider, client) =>
+        {
+            var settings = serviceProvider
+                .GetRequiredService<IOptions<Auth0ClientCredentialsSettings>>().Value;
+
+            client.BaseAddress = new Uri(settings.BaseUrl);
+        });
     }
 
     private static T GetRequiredService<T>(this IServiceCollection services) where T : class

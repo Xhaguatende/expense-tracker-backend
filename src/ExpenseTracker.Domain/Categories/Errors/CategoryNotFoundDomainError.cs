@@ -4,7 +4,7 @@
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Domain.Expenses.Errors;
+namespace ExpenseTracker.Domain.Categories.Errors;
 
 using Shared;
 

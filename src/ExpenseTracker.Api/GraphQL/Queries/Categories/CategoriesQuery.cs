@@ -8,7 +8,7 @@ namespace ExpenseTracker.Api.GraphQL.Queries.Categories;
 
 using ExpenseTracker.Application.Queries.GetCategories;
 using ExpenseTracker.Application.Queries.GetCategory;
-using ExpenseTracker.Domain.Expenses;
+using ExpenseTracker.Domain.Categories;
 using HotChocolate.Data;
 using MediatR;
 

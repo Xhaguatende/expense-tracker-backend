@@ -1,13 +1,13 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="GetCategoriesQuery.cs" company="{Company Name}">
+//  <copyright file="GetCurrenciesQuery.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Application.Queries.GetCategories;
+namespace ExpenseTracker.Application.Queries.GetCurrencies;
 
-using Domain.Categories;
+using Domain.Currencies;
 using HotChocolate;
 using MediatR;
 
-public class GetCategoriesQuery : IRequest<IExecutable<Category>>;
+public class GetCurrenciesQuery : IRequest<IExecutable<Currency>>;

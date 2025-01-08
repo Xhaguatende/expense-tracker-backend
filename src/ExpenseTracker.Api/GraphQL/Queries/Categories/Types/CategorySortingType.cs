@@ -1,21 +1,21 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="ExpenseSortingType.cs" company="{Company Name}">
+//  <copyright file="CategorySortingType.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
 namespace ExpenseTracker.Api.GraphQL.Queries.Categories.Types;
 
-using ExpenseTracker.Domain.Expenses;
+using ExpenseTracker.Domain.Categories;
 using HotChocolate.Data.Sorting;
 
 /// <summary>
-/// Defines the expense sorting properties to expose.
+/// Defines the category sorting properties to expose.
 /// </summary>
 public class CategorySortingType : SortInputType<Category>
 {
     /// <summary>
-    /// Configures the expense sorting type.
+    /// Configures the category sorting type.
     /// </summary>
     /// <param name="descriptor">The descriptor.</param>
     protected override void Configure(ISortInputTypeDescriptor<Category> descriptor)

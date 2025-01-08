@@ -1,29 +1,30 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="ExpenseFilterType.cs" company="{Company Name}">
+//  <copyright file="ExpenseViewSortingType.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
 namespace ExpenseTracker.Api.GraphQL.Queries.Expenses.Types;
 
-using Domain.Expenses;
-using HotChocolate.Data.Filters;
+using Domain.Expenses.Views;
+using HotChocolate.Data.Sorting;
 
 /// <summary>
-/// Defines the expense filter's properties to expose.
+/// Defines the expense view sorting properties to expose.
 /// </summary>
-public class CategoryFilterType : FilterInputType<Expense>
+public class ExpenseViewSortingType : SortInputType<ExpenseView>
 {
     /// <summary>
-    /// Configures the expense filter type.
+    /// Configures the expense view sorting type.
     /// </summary>
     /// <param name="descriptor">The descriptor.</param>
-    protected override void Configure(IFilterInputTypeDescriptor<Expense> descriptor)
+    protected override void Configure(ISortInputTypeDescriptor<ExpenseView> descriptor)
     {
         descriptor.BindFieldsExplicitly();
         descriptor.Field(x => x.Id);
         descriptor.Field(x => x.Title);
+        descriptor.Field(x => x.Category);
+        descriptor.Field(x => x.Amount);
         descriptor.Field(x => x.Date);
-        descriptor.Field(x => x.CategoryId);
     }
 }

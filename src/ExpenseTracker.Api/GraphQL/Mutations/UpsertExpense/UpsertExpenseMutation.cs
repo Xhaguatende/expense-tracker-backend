@@ -6,8 +6,9 @@
 
 namespace ExpenseTracker.Api.GraphQL.Mutations.UpsertExpense;
 
+using Domain.Categories.Errors;
+using Domain.Currencies.Errors;
 using Domain.Expenses;
-using Domain.Expenses.Errors;
 using Domain.Shared;
 using MediatR;
 

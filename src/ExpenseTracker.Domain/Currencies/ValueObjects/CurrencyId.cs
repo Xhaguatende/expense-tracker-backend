@@ -1,32 +1,24 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="Currency.cs" company="{Company Name}">
+//  <copyright file="CurrencyId.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Domain.Expenses.ValueObjects;
+namespace ExpenseTracker.Domain.Currencies.ValueObjects;
 
 using Primitives;
 
-public class Currency : ValueObject
+public class CurrencyId : ValueObject
 {
-    public Currency(string isoSymbol, string symbol)
+    public CurrencyId(string isoSymbol)
     {
         IsoSymbol = isoSymbol;
-        Symbol = symbol;
     }
 
-    public string IsoSymbol { get; set; }
-    public string Symbol { get; set; }
-
-    public override string ToString()
-    {
-        return $"{IsoSymbol} ({Symbol})";
-    }
+    public string IsoSymbol { get; private set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return IsoSymbol;
-        yield return Symbol;
     }
 }

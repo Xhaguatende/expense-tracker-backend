@@ -7,8 +7,9 @@
 namespace ExpenseTracker.Api.GraphQl.Queries.Expenses;
 
 using Application.Queries.GetExpense;
-using Application.Queries.GetExpenses;
+using Application.Queries.GetExpensesView;
 using Domain.Expenses;
+using Domain.Expenses.Views;
 using HotChocolate.Data;
 using MediatR;
 
@@ -38,20 +39,20 @@ public class ExpensesQuery
     }
 
     /// <summary>
-    /// Get the expenses.
+    /// Get the expenses view.
     /// </summary>
     /// <param name="mediator">An instance of <see cref="IMediator" />.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The expense.</returns>
-    [GraphQLDescription("Get the expenses.")]
+    [GraphQLDescription("Get the expenses view.")]
     [UseOffsetPaging(IncludeTotalCount = true, DefaultPageSize = 20)]
     [UseFiltering]
     [UseSorting]
-    public async Task<IExecutable<Expense>> GetExpensesAsync(
+    public async Task<IExecutable<ExpenseView>> GetExpensesViewAsync(
         [Service] IMediator mediator,
         CancellationToken cancellationToken = default)
     {
-        var query = new GetExpensesQuery();
+        var query = new GetExpensesViewQuery();
         var result = await mediator.Send(query, cancellationToken);
 
         return result;

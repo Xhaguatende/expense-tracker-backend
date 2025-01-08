@@ -133,6 +133,9 @@ public static class ServiceCollectionExtensions
             .AddMongoDbSorting()
             .AddMongoDbProjections()
             .AddMongoDbPagingProviders()
+            .AddFiltering()
+            .AddSorting()
+            .AddProjections()
             .AddAuthorization()
             .AddInstrumentation(
                 o =>

@@ -6,6 +6,8 @@
 
 namespace ExpenseTracker.Infrastructure.Repositories;
 
+using Domain.Currencies.ValueObjects;
+using Domain.Expenses.Views;
 using Domain.Primitives;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -54,6 +56,26 @@ public static class MongoConventions
             _ => true);
 
         BsonClassMap.RegisterClassMap<Entity<Guid>>(
+            cm =>
+            {
+                cm.AutoMap();
+                cm.UnmapProperty("Id");
+                cm.MapMember(x => x.Id)
+                    .SetOrder(0)
+                    .SetElementName("id"); // This to prevent the field from being serialised as "_id"
+            });
+
+        BsonClassMap.RegisterClassMap<Entity<CurrencyId>>(
+            cm =>
+            {
+                cm.AutoMap();
+                cm.UnmapProperty("Id");
+                cm.MapMember(x => x.Id)
+                    .SetOrder(0)
+                    .SetElementName("id"); // This to prevent the field from being serialised as "_id"
+            });
+
+        BsonClassMap.RegisterClassMap<ExpenseView>(
             cm =>
             {
                 cm.AutoMap();

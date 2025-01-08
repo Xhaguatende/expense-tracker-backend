@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="EnrichTokenResponse.cs" company="{Company Name}">
+//  <copyright file="VerificationEmailResponse.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
@@ -7,12 +7,12 @@
 namespace ExpenseTracker.Api.Models;
 
 /// <summary>
-/// Represents the enrich token response.
+/// Represents the verification email response.
 /// </summary>
-public class EnrichTokenResponse
+public class VerificationEmailResponse
 {
     /// <summary>
-    /// Gets or sets the custom claims.
+    /// Gets or sets a value indicating whether the email verification was successful.
     /// </summary>
-    public Dictionary<string, string> CustomClaims { get; set; } = [];
+    public bool Success { get; set; }
 }

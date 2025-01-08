@@ -4,7 +4,7 @@
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Domain.Expenses;
+namespace ExpenseTracker.Domain.Categories;
 
 using Primitives;
 

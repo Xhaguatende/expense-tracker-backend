@@ -15,24 +15,14 @@ using HotChocolate;
 using HotChocolate.Data;
 using MongoDB.Driver;
 
-public abstract class MongoDbRepository<T, TKey> : IRepository<T> where T : Entity<TKey> where TKey : notnull
+public abstract class MongoDbRepository<T, TKey> : MongoDbBaseRepository<T>, IRepository<T> where T : Entity<TKey> where TKey : notnull
 {
-    protected readonly IApplicationContextService ApplicationContextService;
-
-    protected readonly string UserIdentity;
-
-    protected MongoDbRepository(IMongoDatabase mongoDatabase, IApplicationContextService applicationContextService)
+    protected MongoDbRepository(
+        IMongoDatabase mongoDatabase,
+        IApplicationContextService applicationContextService)
+        : base(mongoDatabase, applicationContextService)
     {
-        ApplicationContextService = applicationContextService;
-        UserIdentity = applicationContextService.GetUserIdentity();
-
-        // ReSharper disable once VirtualMemberCallInConstructor
-        Collection = mongoDatabase.GetCollection<T>(CollectionName);
     }
-
-    protected IMongoCollection<T> Collection { get; set; }
-
-    protected abstract string CollectionName { get; }
 
     public async Task<long> DeleteOneAsync(T document, CancellationToken cancellationToken)
     {

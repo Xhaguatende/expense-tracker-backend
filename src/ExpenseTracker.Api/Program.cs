@@ -18,6 +18,9 @@ var services = builder.Services;
 services.AddOptions<Auth0Settings>()
     .Bind(builder.Configuration.GetSection(nameof(Auth0Settings)));
 
+services.AddOptions<Auth0ClientCredentialsSettings>()
+    .Bind(builder.Configuration.GetSection(nameof(Auth0ClientCredentialsSettings)));
+
 builder.Services.AddOptions<ObservabilitySettings>()
     .Bind(builder.Configuration.GetSection(nameof(ObservabilitySettings)));
 

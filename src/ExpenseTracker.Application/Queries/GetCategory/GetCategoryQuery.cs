@@ -6,7 +6,7 @@
 
 namespace ExpenseTracker.Application.Queries.GetCategory;
 
-using Domain.Expenses;
+using Domain.Categories;
 using MediatR;
 
 public record GetCategoryQuery(Guid Id) : IRequest<Category?>;

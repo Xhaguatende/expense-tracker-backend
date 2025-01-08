@@ -10,12 +10,12 @@ using Primitives;
 
 public class Money : ValueObject
 {
-    public required Currency Currency { get; set; }
-    public decimal Value { get; set; }
+    public required string CurrencyIsoSymbol { get; set; }
+    public required decimal Value { get; set; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
-        yield return Currency;
+        yield return CurrencyIsoSymbol;
     }
 }

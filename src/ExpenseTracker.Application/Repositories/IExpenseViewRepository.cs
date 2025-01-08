@@ -1,13 +1,15 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="GetCategoriesQuery.cs" company="{Company Name}">
+//  <copyright file="IExpenseViewRepository.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Application.Queries.GetCategories;
+namespace ExpenseTracker.Application.Repositories;
 
-using Domain.Categories;
+using Domain.Expenses.Views;
 using HotChocolate;
-using MediatR;
 
-public class GetCategoriesQuery : IRequest<IExecutable<Category>>;
+public interface IExpenseViewRepository
+{
+    IExecutable<ExpenseView> GetExpensesViewAsync();
+}

@@ -1,18 +1,17 @@
 ﻿// -------------------------------------------------------------------------------------
-//  <copyright file="IExpenseRepository.cs" company="{Company Name}">
+//  <copyright file="ICurrencyRepository.cs" company="{Company Name}">
 //    Copyright (c) {Company Name}. All rights reserved.
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
 namespace ExpenseTracker.Application.Repositories;
 
-using Base;
-using Domain.Categories;
+using Domain.Currencies;
 using HotChocolate;
 
-public interface ICategoryRepository : IRepository<Category>
+public interface ICurrencyRepository
 {
-    IExecutable<Category> GetCategoriesAsync();
+    IExecutable<Currency> GetCurrencies();
 
-    Task<Category?> GetCategoryByIdAsync(Guid categoryId, CancellationToken cancellationToken);
+    Task<Currency?> GetCurrencyAsync(string isoSymbol, CancellationToken cancellationToken = default);
 }

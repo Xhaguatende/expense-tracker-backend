@@ -6,8 +6,9 @@
 
 namespace ExpenseTracker.Application.Commands.UpsertExpense;
 
+using Domain.Categories.Errors;
+using Domain.Currencies.Errors;
 using Domain.Expenses;
-using Domain.Expenses.Errors;
 using Domain.Shared;
 using MediatR;
 using Repositories;
@@ -17,19 +18,19 @@ public class UpsertExpenseCommandHandler : IRequestHandler<UpsertExpenseCommand,
 {
     private readonly IApplicationContextService _applicationContextService;
     private readonly ICategoryRepository _categoryRepository;
-    private readonly ICurrencyService _currencyService;
+    private readonly ICurrencyRepository _currencyRepository;
     private readonly IExpenseRepository _expenseRepository;
 
     public UpsertExpenseCommandHandler(
         IExpenseRepository expenseRepository,
         ICategoryRepository categoryRepository,
         IApplicationContextService applicationContextService,
-        ICurrencyService currencyService)
+        ICurrencyRepository currencyRepository)
     {
         _expenseRepository = expenseRepository;
         _categoryRepository = categoryRepository;
         _applicationContextService = applicationContextService;
-        _currencyService = currencyService;
+        _currencyRepository = currencyRepository;
     }
 
     public async Task<DomainResult<Expense>> Handle(UpsertExpenseCommand request, CancellationToken cancellationToken)
@@ -83,15 +84,11 @@ public class UpsertExpenseCommandHandler : IRequestHandler<UpsertExpenseCommand,
             errors.Add(new CategoryNotFoundDomainError(request.CategoryId));
         }
 
-        var currency = _currencyService.GetCurrency(request.Amount.Currency.IsoSymbol);
+        var currency = await _currencyRepository.GetCurrencyAsync(request.Amount.CurrencyIsoSymbol, cancellationToken);
 
         if (currency == null)
         {
-            errors.Add(new CurrencyNotFoundDomainError(request.Amount.Currency.IsoSymbol));
-        }
-        else
-        {
-            request.Amount.Currency = currency;
+            errors.Add(new CurrencyNotFoundDomainError(request.Amount.CurrencyIsoSymbol));
         }
 
         return errors;

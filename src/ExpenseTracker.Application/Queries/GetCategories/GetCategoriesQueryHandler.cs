@@ -6,7 +6,7 @@
 
 namespace ExpenseTracker.Application.Queries.GetCategories;
 
-using Domain.Expenses;
+using Domain.Categories;
 using HotChocolate;
 using MediatR;
 using Repositories;

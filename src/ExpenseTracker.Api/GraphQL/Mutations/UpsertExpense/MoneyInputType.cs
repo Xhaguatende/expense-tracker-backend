@@ -20,9 +20,11 @@ public class MoneyInputType : InputObjectType<Money>
     protected override void Configure(IInputObjectTypeDescriptor<Money> descriptor)
     {
         descriptor.BindFieldsExplicitly();
+
         descriptor.Field(x => x.Value)
             .Type<NonNullType<DecimalType>>();
-        descriptor.Field(x => x.Currency)
-            .Type<NonNullType<CurrencyInputType>>();
+
+        descriptor.Field(x => x.CurrencyIsoSymbol)
+            .Type<NonNullType<StringType>>();
     }
 }

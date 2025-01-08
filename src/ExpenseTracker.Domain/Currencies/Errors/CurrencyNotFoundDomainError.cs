@@ -4,17 +4,17 @@
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Domain.Expenses.Errors;
+namespace ExpenseTracker.Domain.Currencies.Errors;
 
 using Shared;
 
 public class CurrencyNotFoundDomainError : DomainError
 {
-    public CurrencyNotFoundDomainError(string isoCurrencySymbol)
-    : base(nameof(CurrencyNotFoundDomainError), $"Currency with ISO symbol '{isoCurrencySymbol}' was not found.")
+    public CurrencyNotFoundDomainError(string isoSymbol)
+    : base(nameof(CurrencyNotFoundDomainError), $"Currency with ISO symbol '{isoSymbol}' was not found.")
     {
-        IsoCurrencySymbol = isoCurrencySymbol;
+        IsoSymbol = isoSymbol;
     }
 
-    public string IsoCurrencySymbol { get; }
+    public string IsoSymbol { get; }
 }

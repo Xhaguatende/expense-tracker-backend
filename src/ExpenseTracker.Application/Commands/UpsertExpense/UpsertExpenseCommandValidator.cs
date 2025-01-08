@@ -36,9 +36,9 @@ public class UpsertExpenseCommandValidator : AbstractValidator<UpsertExpenseComm
             .NotNull().WithMessage("Amount is required")
             .Custom((money, context) =>
             {
-                if (string.IsNullOrWhiteSpace(money.Currency.IsoSymbol))
+                if (string.IsNullOrWhiteSpace(money.CurrencyIsoSymbol))
                 {
-                    context.AddFailure("Currency symbol is required");
+                    context.AddFailure("CurrencyIsoSymbol symbol is required");
                 }
 
                 if (money.Value <= 0)

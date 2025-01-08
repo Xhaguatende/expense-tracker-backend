@@ -6,16 +6,16 @@
 
 namespace ExpenseTracker.Api.GraphQL.Queries.Categories.Types;
 
-using ExpenseTracker.Domain.Expenses;
+using ExpenseTracker.Domain.Categories;
 using HotChocolate.Data.Filters;
 
 /// <summary>
-/// Defines the expense filter's properties to expose.
+/// Defines the category filter's properties to expose.
 /// </summary>
 public class CategoryFilterType : FilterInputType<Category>
 {
     /// <summary>
-    /// Configures the expense filter type.
+    /// Configures the category filter type.
     /// </summary>
     /// <param name="descriptor">The descriptor.</param>
     protected override void Configure(IFilterInputTypeDescriptor<Category> descriptor)
