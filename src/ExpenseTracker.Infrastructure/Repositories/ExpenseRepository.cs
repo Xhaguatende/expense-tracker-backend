@@ -24,6 +24,11 @@ public class ExpenseRepository : MongoDbRepository<Expense, Guid>, IExpenseRepos
 
     protected override string CollectionName => "expenses";
 
+    public async Task DeleteAsync(Expense expense, CancellationToken cancellationToken)
+    {
+        await DeleteOneAsync(expense, cancellationToken);
+    }
+
     public async Task<Expense?> GetExpenseByIdAsync(Guid expenseId, CancellationToken cancellationToken)
     {
         return await GetOneByExpressionAsync(x => x.Id == expenseId && x.Owner == UserIdentity, cancellationToken);

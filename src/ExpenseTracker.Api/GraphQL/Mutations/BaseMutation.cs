@@ -23,4 +23,14 @@ public abstract class BaseMutation
     {
         return result.IsFailure ? new FieldResult<T>(result.Errors) : result.Value!;
     }
+
+    /// <summary>
+    /// Creates a mutation result.
+    /// </summary>
+    /// <param name="result">The result</param>
+    /// <returns>The <see cref="FieldResult{Boolean}"/></returns>
+    protected static FieldResult<bool> CreateMutationResult(DomainBasicResult result)
+    {
+        return result.IsFailure ? new FieldResult<bool>(result.Errors) : result.IsSuccess;
+    }
 }

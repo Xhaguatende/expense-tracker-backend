@@ -10,6 +10,7 @@ using Domain.Categories.Errors;
 using Domain.Currencies.Errors;
 using Domain.Expenses;
 using Domain.Shared;
+using Domain.Expenses.Errors;
 using MediatR;
 using Repositories;
 using Services;
@@ -35,8 +36,6 @@ public class UpsertExpenseCommandHandler : IRequestHandler<UpsertExpenseCommand,
 
     public async Task<DomainResult<Expense>> Handle(UpsertExpenseCommand request, CancellationToken cancellationToken)
     {
-        var expense = await _expenseRepository.GetOneByExpressionAsync(x => x.Id == request.Id, cancellationToken);
-
         var errors = await ValidateAsync(request, cancellationToken);
 
         if (errors.Count > 0)
@@ -44,8 +43,17 @@ public class UpsertExpenseCommandHandler : IRequestHandler<UpsertExpenseCommand,
             return DomainResult<Expense>.Failure(errors, "Upsert validation failed.");
         }
 
-        if (expense != null)
+        Expense? expense;
+
+        if (request.Id != null)
         {
+            expense = await _expenseRepository.GetExpenseByIdAsync(request.Id!.Value, cancellationToken);
+
+            if (expense == null)
+            {
+                return new DomainResult<Expense>(null, errors: [new ExpenseNotFoundDomainError(request.Id!.Value)]);
+            }
+
             expense.Update(
                 request.CategoryId,
                 request.Title,

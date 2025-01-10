@@ -9,11 +9,13 @@ namespace ExpenseTracker.Api.GraphQL.Mutations.UpsertExpense;
 using Domain.Categories.Errors;
 using Domain.Currencies.Errors;
 using Domain.Expenses;
+using Domain.Expenses.Errors;
 using Domain.Shared;
 using MediatR;
+using Types;
 
 /// <summary>
-/// Represents the expenses mutation.
+/// Defines the <see cref="UpsertExpenseMutation" />.
 /// </summary>
 [MutationType]
 public class UpsertExpenseMutation : BaseMutation
@@ -27,6 +29,7 @@ public class UpsertExpenseMutation : BaseMutation
     /// <returns>The saved expense.</returns>
     [GraphQLDescription("Upserts an expense.")]
     [UseMutationConvention]
+    [Error(typeof(ExpenseNotFoundDomainError))]
     [Error(typeof(CategoryNotFoundDomainError))]
     [Error(typeof(CurrencyNotFoundDomainError))]
     [Error(typeof(DomainError))]

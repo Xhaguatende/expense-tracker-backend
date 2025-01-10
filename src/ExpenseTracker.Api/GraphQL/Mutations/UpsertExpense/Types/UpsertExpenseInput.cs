@@ -4,7 +4,7 @@
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Api.GraphQL.Mutations.UpsertExpense;
+namespace ExpenseTracker.Api.GraphQL.Mutations.UpsertExpense.Types;
 
 using Application.Commands.UpsertExpense;
 

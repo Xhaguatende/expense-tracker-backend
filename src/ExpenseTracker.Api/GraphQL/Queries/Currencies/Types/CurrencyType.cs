@@ -6,6 +6,7 @@
 
 namespace ExpenseTracker.Api.GraphQL.Queries.Currencies.Types;
 
+using Application.Helpers;
 using Domain.Currencies;
 
 /// <summary>
@@ -21,6 +22,16 @@ public class CurrencyType : ObjectType<Currency>
     {
         descriptor.BindFieldsExplicitly();
         descriptor.Field(x => x.IsoSymbol);
-        descriptor.Field(x => x.Symbol);
+        descriptor.Field(x => x.Name);
+
+        descriptor.Field("symbol")
+            .Type<StringType>()
+            .Resolve(
+                context =>
+                {
+                    var currency = context.Parent<Currency>();
+
+                    return CurrencyHelper.GetCurrencySymbol(currency.IsoSymbol);
+                });
     }
 }

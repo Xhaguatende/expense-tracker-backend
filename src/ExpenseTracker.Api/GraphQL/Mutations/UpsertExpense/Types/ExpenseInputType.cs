@@ -4,8 +4,7 @@
 //  </copyright>
 // -------------------------------------------------------------------------------------
 
-namespace ExpenseTracker.Api.GraphQL.Mutations.UpsertExpense;
-
+namespace ExpenseTracker.Api.GraphQL.Mutations.UpsertExpense.Types;
 /// <summary>
 /// Represents the input type for the upsert expense mutation.
 /// </summary>
