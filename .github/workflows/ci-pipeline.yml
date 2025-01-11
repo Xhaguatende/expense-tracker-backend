@@ -52,4 +52,5 @@ jobs:
       docker_hub_repository: "expense-tracker-api"
       docker_image_title: "Expense Tracker API"
       docker_image_description: "Docker image for Expense Tracker API"
+      has_mongodb_migration: true
     secrets: inherit
