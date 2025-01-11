@@ -18,20 +18,22 @@ on:
   workflow_dispatch:
     inputs:
       enable_quality_gates:
-        description: "Enable quality gates in the reusable workflow (true/false)"
+        description: "Enable quality gates in the reusable workflow"
         required: false
-        default: "true"
+        type: boolean
+        default: true
       enable_release:
-        description: "Enable release in the reusable workflow (true/false)"
+        description: "Enable release in the reusable workflow"
         required: false
-        default: "false"
+        type: boolean
+        default: false
 
 jobs:
   call-build-workflow:
     uses: Xhaguatende/reusable-workflows/.github/workflows/dotnet-web-reusable.yml@main
     with:
-      enable_quality-gates: ${{ inputs.enable_quality_gates == 'true' }}
-      enable_release: ${{ inputs.enable_release == 'true' }}
+      enable_quality-gates: ${{ inputs.enable_quality_gates }}
+      enable_release: ${{ inputs.enable_release }}
       dotnet_version: "9.x"
       sonar_cloud_organization: "xhaguatende-01"
       sonar_cloud_project_key: "Xhaguatende_expense-tracker-backend"
