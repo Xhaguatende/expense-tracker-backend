@@ -32,7 +32,7 @@ jobs:
   call-build-workflow:
     uses: Xhaguatende/reusable-workflows/.github/workflows/dotnet-web-reusable.yml@main
     with:
-      enable_quality-gates: ${{ inputs.enable_quality_gates }}
+      enable_quality_gates: ${{ inputs.enable_quality_gates }}
       enable_release: ${{ inputs.enable_release }}
       dotnet_version: "9.x"
       sonar_cloud_organization: "xhaguatende-01"
