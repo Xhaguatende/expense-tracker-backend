@@ -19,12 +19,12 @@ on:
     inputs:
       enable_quality_gates:
         required: true
-        type: boolean
-        default: true
+        type: string
+        default: 'true'
       enable_release:
         required: true
-        type: boolean
-        default: false
+        type: string
+        default: 'false'
   workflow_dispatch:
     inputs:
       enable_quality_gates:
