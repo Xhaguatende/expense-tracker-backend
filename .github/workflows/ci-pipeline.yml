@@ -18,12 +18,12 @@ on:
   workflow_dispatch:
     inputs:
       enable_quality_gates:
-        description: "Enable quality gates in the reusable workflow"
+        description: "Enable quality gates (e.g., unit tests, SonarCloud, etc.)"
         required: false
         type: boolean
         default: true
       enable_release:
-        description: "Enable release in the reusable workflow"
+        description: "Enable release (e.g., Docker image, GitHub release, etc.)"
         required: false
         type: boolean
         default: false

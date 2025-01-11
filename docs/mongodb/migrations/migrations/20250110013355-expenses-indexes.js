@@ -23,11 +23,10 @@ module.exports = {
         console.log("------------------------");
         console.log("");
       });
+
+      await session.endSession();
     } catch (error) {
       console.log(error);
-      session.abortTransaction();
-    } finally {
-      await session.endSession();
     }
   },
 
