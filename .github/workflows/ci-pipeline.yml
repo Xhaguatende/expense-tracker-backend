@@ -1,5 +1,5 @@
 #####################################################################################################
-# CI Pipeline
+# CI Pipeline for Expense Tracker Backend.
 # This pipeline is responsible for building, testing, and releasing.
 # It uses the following reusable workflow:
 # - .github/workflows/dotnet-web-reusable.yml
@@ -56,8 +56,8 @@ jobs:
       sonar_cloud_project_key: "Xhaguatende_expense-tracker-backend"
       publish_project: "./ExpenseTracker.Api/ExpenseTracker.Api.csproj"
       docker_file: "./docker/Dockerfile.Api"
-      docker_hub_repository: "expense-tracker-api"
+      docker_hub_repository: "expense-tracker-backend"
       docker_image_title: "Expense Tracker API"
-      docker_image_description: "Docker image for Expense Tracker API"
+      docker_image_description: "Docker image for Expense Tracker Backend"
       has_mongodb_migration: true
     secrets: inherit
