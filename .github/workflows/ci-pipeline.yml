@@ -1,3 +1,10 @@
+#####################################################################################################
+# CI Pipeline
+# This pipeline is responsible for building, testing, and releasing.
+# It uses the following reusable workflow:
+# - .github/workflows/dotnet-web-reusable.yml
+#####################################################################################################
+
 name: CI Pipeline
 
 on:
