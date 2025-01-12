@@ -2,7 +2,7 @@
 # CI Pipeline for Expense Tracker Backend.
 # This pipeline is responsible for building, testing, and releasing.
 # It uses the following reusable workflow:
-# - .github/workflows/dotnet-web-reusable.yml
+#   - .github/workflows/dotnet-web-reusable.yml
 #####################################################################################################
 
 name: CI Pipeline
